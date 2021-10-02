@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "WcmI5WenKCIkLXf44PtQvP/AmrvJ6HT0UdAKbab46bzBglmldx8bvaCri+Oh9xMndkWOWBEJjtozytihe1bNdA==",
+  "dgSpecHash": "m/Tv3SB4mjbr0Uf476a3XgjulzNuK1wgxswO1pMevw0tKIR6wzwgIBSesB028spo+ruXbK6ejvYKZorKjE8zIg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\furka\\source\\repos\\CoreBlog\\CoreBlog\\CoreBlog.csproj",
+  "projectFilePath": "C:\\Users\\furka\\Documents\\GitHub\\CoreBlog\\CoreBlog\\CoreBlog.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\furka\\.nuget\\packages\\humanizer.core\\2.2.0\\humanizer.core.2.2.0.nupkg.sha512",
     "C:\\Users\\furka\\.nuget\\packages\\microsoft.aspnetcore.html.abstractions\\2.2.0\\microsoft.aspnetcore.html.abstractions.2.2.0.nupkg.sha512",

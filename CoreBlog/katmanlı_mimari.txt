@@ -1,0 +1,34 @@
+﻿kod tekrarını önler
+
+projeye olan hakimiyet artar
+
+kod okunaklığı artar
+
+clean code yapısı sağlanır
+
+hata yönetimi kolaylaşır
+
+///////////////////////
+
+N Tier Arc.
+
+Entity Layer --> Class
+
+Data Access Layer --> Crud
+
+Business Layer --> Validasyon
+
+Presentation Layer --> Sunum UI
+
+Core Layer
+
+Api
+
+///////////////////////
+
+Crud Operasyonlar
+
+Create
+Read
+Update
+Delete
