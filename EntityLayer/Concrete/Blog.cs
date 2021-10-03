@@ -17,5 +17,10 @@ namespace EntityLayer.Concrete
         public string Image { get; set; }
         public DateTime CreateDate { get; set; }
         public bool IsActive { get; set; }
+
+        public int CategoryId { get; set; }
+        public Category Category { get; set; }
+
+        public List<Comment> Comment { get; set; }
     }
 }
