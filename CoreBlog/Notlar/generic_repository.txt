@@ -1,0 +1,20 @@
+﻿Generic Repository
+
+CRUD
+
+Create
+Read
+Update
+Delete
+
+///////////////////
+
+Her bir crud operasyonuna ait bir metot tanımlanacak.
+
+Metotların imzası olarak interfaceler kullanılacak.
+
+Abstract üzerinde soyut ifade olarak interfaceleri tanımlar
+Concrete üzerinde somut ifade olarak bu interfaceler içinde yer alan metotların içini doldur!
+
+
+Ekleme - Silme - Güncelleme --> VOID
