@@ -1,0 +1,3 @@
+﻿Business Katmanında Abstract Klasörü İçinde Yer Alan Interfaceler: Service olarak adlandırılıyor.
+
+Business Katmanında Concrete Klasörü İçinde Yer Alan Sınıflar: Manager Olarak adlandırılıyor.
