@@ -13,7 +13,7 @@ namespace CoreBlog.Controllers
         BlogManager blogManager = new BlogManager(new EfBlogRepository());
         public IActionResult Index()
         {
-            return View(blogManager.GetList());
+            return View(blogManager.FetchCategory());
         }
     }
 }
