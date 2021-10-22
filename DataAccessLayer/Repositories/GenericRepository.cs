@@ -3,6 +3,7 @@ using DataAccessLayer.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -23,10 +24,10 @@ namespace DataAccessLayer.Repositories
             return c.Set<T>().Find(id);
         }
 
-        public List<T> GetListAll()
+        public List<T> GetListAll(Expression<Func<T, bool>> filter = null)
         {
             using var c = new Context();
-            return c.Set<T>().ToList();
+            return filter == null ? (c.Set<T>().Where(filter).ToList()) : (c.Set<T>().ToList());
         }
 
         public void Insert(T t)
