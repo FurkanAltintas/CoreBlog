@@ -14,5 +14,7 @@ namespace BusinessLayer.Abstract
         void Delete(Blog blog);
         List<Blog> GetList();
         Blog GetById(int id);
+
+        List<Blog> FetchCategory();
     }
 }
