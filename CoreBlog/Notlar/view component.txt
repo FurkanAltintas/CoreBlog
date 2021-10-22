@@ -1,0 +1,17 @@
+﻿View Component
+
+Partial url üzerinden erişim var
+
+View Component ile url üzerinden erişim yok
+
+Asp.Net Core ile hayatımıza giren bir kavramdır.
+
+<-- ViewComponents -->
+
+Başlangıçta atılan isim default.cshtml
+
+Aradığı yer
+
+Views/Components/...
+
+Views/Shared/Components/...
