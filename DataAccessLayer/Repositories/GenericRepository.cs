@@ -27,7 +27,14 @@ namespace DataAccessLayer.Repositories
         public List<T> GetListAll(Expression<Func<T, bool>> filter = null)
         {
             using var c = new Context();
-            return filter == null ? (c.Set<T>().Where(filter).ToList()) : (c.Set<T>().ToList());
+            if (filter == null)
+            {
+                return c.Set<T>().ToList();
+            }
+            else
+            {
+                return c.Set<T>().Where(filter).ToList();
+            }
         }
 
         public void Insert(T t)
