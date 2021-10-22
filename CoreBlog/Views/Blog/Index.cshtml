@@ -15,7 +15,7 @@
                     @foreach (var item in Model)
                     {
                         <div class="col-lg-4 card">
-                            <a href="single.html">
+                            <a href="@Url.Action("Detail","Blog",new { id = item.BlogId })">
                                 <img src="@item.Image" class="card-img-top img-fluid" alt="">
                             </a>
                             <div class="card-body">
@@ -42,7 +42,7 @@
                                 <h5 class="card-title">
                                     <a href="@Url.Action("Detail","Blog",new { id = item.BlogId })">@item.Title</a>
                                 </h5>
-                                <p class="card-text mb-3">Lorem ipsum dolor sit amet consectetur adipisicing elit sedc dnmo eiusmod tempor incididunt.. </p>
+                                <p class="card-text mb-3">@(item.Content.Length < 150 ? item.Content : item.Content.Substring(0,item.Content.Substring(0,150).LastIndexOf(" "))) ... </p>
                                 <a href="@Url.Action("Detail","Blog",new { id = item.BlogId })" class="btn btn-primary read-m">Devamını Oku</a>
                             </div>
                         </div>
