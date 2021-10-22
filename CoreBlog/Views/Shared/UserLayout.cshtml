@@ -79,7 +79,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="index.html">
+                            <a class="nav-link" href="@Url.Action("Index","Blog")">
                                 Anasayfa
                                 <span class="sr-only">(current)</span>
                             </a>
@@ -110,9 +110,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     </div>
     <ol class="breadcrumb">
         <li class="breadcrumb-item">
-            <a href="index.html">@Html.ViewContext.RouteData.Values["controller"].ToString()</a>
+            <a href="@Url.Action("")">@Html.ViewContext.RouteData.Values["controller"].ToString()</a>
         </li>
-        <li class="breadcrumb-item active">@Html.ViewContext.RouteData.Values["action"].ToString()</li>
+        <li class="breadcrumb-item active">@ViewData["Title"]</li>
     </ol>
     <!--//banner-->
     <!--/main-->
