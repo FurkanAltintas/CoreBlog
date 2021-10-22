@@ -9,3 +9,4 @@ C:\Users\furka\Documents\GitHub\CoreBlog\CoreLayer\obj\Debug\net5.0\CoreLayer.cs
 C:\Users\furka\Documents\GitHub\CoreBlog\CoreLayer\obj\Debug\net5.0\CoreLayer.dll
 C:\Users\furka\Documents\GitHub\CoreBlog\CoreLayer\obj\Debug\net5.0\ref\CoreLayer.dll
 C:\Users\furka\Documents\GitHub\CoreBlog\CoreLayer\obj\Debug\net5.0\CoreLayer.pdb
+C:\Users\furka\Documents\GitHub\CoreBlog\CoreLayer\obj\Debug\net5.0\CoreLayer.csproj.AssemblyReference.cache
