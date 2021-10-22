@@ -15,5 +15,10 @@ namespace CoreBlog.Controllers
         {
             return View(blogManager.FetchCategory());
         }
+
+        public IActionResult Detail(int id)
+        {
+            return View(blogManager.GetById(id));
+        }
     }
 }
