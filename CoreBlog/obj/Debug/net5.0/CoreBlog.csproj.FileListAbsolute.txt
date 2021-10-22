@@ -274,3 +274,4 @@ C:\Users\furka\Documents\GitHub\CoreBlog\CoreBlog\obj\Debug\net5.0\Razor\Views\B
 C:\Users\furka\Documents\GitHub\CoreBlog\CoreBlog\obj\Debug\net5.0\Razor\Views\Comment\Add.cshtml.g.cs
 C:\Users\furka\Documents\GitHub\CoreBlog\CoreBlog\obj\Debug\net5.0\Razor\Views\Comment\List.cshtml.g.cs
 C:\Users\furka\Documents\GitHub\CoreBlog\CoreBlog\obj\Debug\net5.0\Razor\Views\Shared\Components\CommentList\Default.cshtml.g.cs
+C:\Users\furka\Documents\GitHub\CoreBlog\CoreBlog\obj\Debug\net5.0\Razor\Views\Shared\Components\CategoryList\Default.cshtml.g.cs
