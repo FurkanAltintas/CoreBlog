@@ -1,0 +1,9 @@
+﻿Ekleme işlemi yapılırken, httpget ve httppost attributelerinin tanımlandığı metotların
+isimleri aynı olmak zorundadır
+
+HttpGet --> Sayfa Yüklenince
+
+HttpPost --> Sayfada buton tetiklenince
+
+Mesela HttpGet Attribute komutu sayfada kategorize veya benzeri işlemler kullanılırken
+sayfada yüklendiği anda listelenmesi istenen niteliklerde kullanılabilir.
