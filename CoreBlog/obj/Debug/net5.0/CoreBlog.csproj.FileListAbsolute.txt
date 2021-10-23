@@ -276,3 +276,7 @@ C:\Users\furka\Documents\GitHub\CoreBlog\CoreBlog\obj\Debug\net5.0\Razor\Views\S
 C:\Users\furka\Documents\GitHub\CoreBlog\CoreBlog\obj\Debug\net5.0\Razor\Views\Shared\Components\CategoryList\Default.cshtml.g.cs
 C:\Users\furka\Documents\GitHub\CoreBlog\CoreBlog\obj\Debug\net5.0\Razor\Views\Shared\Home\Account.cshtml.g.cs
 C:\Users\furka\Documents\GitHub\CoreBlog\CoreBlog\obj\Debug\net5.0\Razor\Views\Account\Register.cshtml.g.cs
+C:\Users\furka\Documents\GitHub\CoreBlog\CoreBlog\bin\Debug\net5.0\FluentValidation.dll
+C:\Users\furka\Documents\GitHub\CoreBlog\CoreBlog\bin\Debug\net5.0\FluentValidation.AspNetCore.dll
+C:\Users\furka\Documents\GitHub\CoreBlog\CoreBlog\bin\Debug\net5.0\FluentValidation.DependencyInjectionExtensions.dll
+C:\Users\furka\Documents\GitHub\CoreBlog\CoreBlog\obj\Debug\net5.0\CoreBlog.MvcApplicationPartsAssemblyInfo.cs
