@@ -19,26 +19,35 @@
                         <div class="col-md-6 mb-3">
                             <label for="validationCustom01">Adınız Soyadınız</label>
                             @Html.TextBoxFor(x => x.FullName, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(x => x.FullName, null, new { @class = "text-danger" })
                         </div>
                         <div class="col-md-6 mb-3">
                             <label for="validationCustom02">Mail Adresi</label>
                             @Html.TextBoxFor(x => x.Mail, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(x => x.Mail, null, new { @class = "text-danger" })
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="exampleInputPassword1 mb-2">Şifre</label>
                             @Html.PasswordFor(x => x.Password, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(x => x.Password, null, new { @class = "text-danger" })
                         </div>
                         <div class="form-group col-md-6">
                             <label for="exampleInputPassword2 mb-2">Şifre Tekrar</label>
                             @Html.PasswordFor(x => x.Password, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(x => x.Password, null, new { @class = "text-danger" })
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-12">
+                            <label for="exampleInputPassword1 mb-2">Dosya Yolu</label>
+                            @Html.TextBoxFor(x => x.Image, new { @class = "form-control", type = "file" })
+                        </div>
+
+                        <div class="form-group col-md-12">
                             <label for="exampleInputPassword1 mb-2">Şehir</label>
-                            @Html.DropDownList("cities", (ViewBag.City), "Şehir Seçiniz", new { @class = "form-control" })
+                            @Html.DropDownList("city", (ViewBag.City), "Şehir Seçiniz", new { @class = "form-control" })
                         </div>
                     </div>
                     <button type="submit" class="btn btn-primary submit mb-4">Kayıt Ol</button>
