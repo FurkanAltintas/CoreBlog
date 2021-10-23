@@ -1,7 +1,9 @@
 ﻿using BusinessLayer.Concrete;
+using BusinessLayer.ValidationRules;
 using CoreBlog.ViewModels;
 using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
+using FluentValidation.Results;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
@@ -14,6 +16,7 @@ namespace CoreBlog.Controllers
     public class AccountController : Controller
     {
         WriterManager writerManager = new WriterManager(new EfWriterRepository());
+        WriterValidator writerValidator = new WriterValidator();
         [HttpGet]
         public IActionResult Login()
         {
@@ -37,33 +40,46 @@ namespace CoreBlog.Controllers
         [HttpGet]
         public IActionResult Register()
         {
-            List<City> cities = new List<City>();
-            cities.Add(new City()
-            {
-                Id = 1,
-                Name = "İstanbul"
-            });
-            cities.Add(new City()
-            {
-                Id = 2,
-                Name = "İzmir"
-            });
-            cities.Add(new City()
-            {
-                Id = 3,
-                Name = "Ankara"
-            });
-
-            ViewBag.City = new SelectList(cities.ToList(), "Id", "Name");
+            ViewBag.City = GetCity();
             return View();
         }
 
         [HttpPost]
-        public IActionResult Register(Writer p)
+        public IActionResult Register(Writer p, string city)
         {
-            writerManager.Register(p);
-            return RedirectToAction("Login", "Account");
+            ValidationResult validationResult = writerValidator.Validate(p);
+            if (validationResult.IsValid)
+            {
+                p.IsActive = true;
+                writerManager.Add(p);
+                return RedirectToAction("Login", "Account");
+            }
+            else
+            {
+                foreach (var item in validationResult.Errors)
+                {
+                    ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
+                }
+            }
+            return View(p);
         }
 
+        public List<SelectListItem> GetCity()
+        {
+            List<SelectListItem> city = (from x in Cities()
+                                         select new SelectListItem
+                                         {
+                                             Text = x,
+                                             Value = x
+                                         }).ToList();
+            return city;
+        }
+
+        public List<string> Cities()
+        {
+            string[] cities = new string[] { "İstanbul", "İzmir", "Ankara", "Tokat", "Amasya", "Düzce", "Eskişehir" };
+
+            return new List<string>(cities);
+        }
     }
 }
