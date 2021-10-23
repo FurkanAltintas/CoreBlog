@@ -32,7 +32,7 @@ namespace BusinessLayer.Concrete
             }
         }
 
-        public void Register(Writer writer)
+        public void Add(Writer writer)
         {
             _writerDal.Insert(writer);
         }
