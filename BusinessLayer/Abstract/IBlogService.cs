@@ -17,5 +17,6 @@ namespace BusinessLayer.Abstract
 
         List<Blog> FetchCategory();
         List<Blog> FetchWriter(int id);
+        Blog LastPost();
     }
 }
