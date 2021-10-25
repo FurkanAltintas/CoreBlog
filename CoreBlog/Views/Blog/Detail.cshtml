@@ -44,11 +44,15 @@
                         <a href="single.html">@Model.Title  </a>
                     </h3>
                     <p>
-                        @Model.Content
+                        @Model.Description
                     </p>
                 </div>
                 @await Component.InvokeAsync("CommentList", new { id = Model.BlogId })
-                @await Html.PartialAsync("~/Views/Comment/Add.cshtml")
+
+                @await Html.PartialAsync("~/Views/Comment/Add.cshtml", new Comment()
+           {
+               BlogId = Model.BlogId
+           })
             </div>
 
             <!--//left-->
@@ -58,57 +62,12 @@
                     <div class="tech-btm">
                         <img src="~/weblog/images/banner1.jpg" class="img-fluid" alt="">
                     </div>
-                    <div class="tech-btm">
-                        <h4>Haber bültenimize kaydolun</h4>
-                        <p>Gizliliğinize saygı duyuyoruz. Asla spam yok! </p>
-                        <form action="#" method="post">
-                            <input type="email" placeholder="Email" required="">
-                            <input type="submit" value="Takip Et">
-                        </form>
-
-                    </div>
-                    @await Component.InvokeAsync("CategoryList") 
-                    <div class="tech-btm">
-                        <h4>Yazarın Diğer Yazıları</h4>
-
-                        <div class="blog-grids row mb-3">
-                            <div class="col-md-5 blog-grid-left">
-                                <a href="single.html">
-                                    <img src="~/weblog/images/images/1.jpg" class="img-fluid" alt="">
-                                </a>
-                            </div>
-                            <div class="col-md-7 blog-grid-right">
-
-                                <h5>
-                                    <a href="single.html">Pellentesque dui, non felis. Maecenas male non felis </a>
-                                </h5>
-                                <div class="sub-meta">
-                                    <span>
-                                        <i class="far fa-clock"></i> 20 Jan, 2018
-                                    </span>
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="blog-grids row mb-3">
-                            <div class="col-md-5 blog-grid-left">
-                                <a href="single.html">
-                                    <img src="~/weblog/images/images/6.jpg" class="img-fluid" alt="">
-                                </a>
-                            </div>
-                            <div class="col-md-7 blog-grid-right">
-                                <h5>
-                                    <a href="single.html">Pellentesque dui, non felis. Maecenas male non felis </a>
-                                </h5>
-                                <div class="sub-meta">
-                                    <span>
-                                        <i class="far fa-clock"></i> 20 Feb, 2018
-                                    </span>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>                    
+                    @await Html.PartialAsync("~/Views/Newsletter/Index.cshtml", new NewsletterById()
+               {
+                   BlogId = Model.BlogId
+               })
+                    @await Component.InvokeAsync("CategoryList")
+                    @await Component.InvokeAsync("BlogListByWriter", new { id = Model.WriterId })
                     <div class="single-gd tech-btm">
                         <h4>Son Post</h4>
                         <div class="blog-grids">
