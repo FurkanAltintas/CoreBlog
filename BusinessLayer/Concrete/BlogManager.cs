@@ -30,7 +30,12 @@ namespace BusinessLayer.Concrete
 
         public List<Blog> FetchCategory()
         {
-            return _blogDal.GetListWithCategory();
+            return _blogDal.GetListWithCategory(); //Kategorileri getirme
+        }
+
+        public List<Blog> FetchWriter(int id)
+        {
+            return _blogDal.GetListAll(x => x.WriterId == id).TakeLast(2).ToList(); // Son 2 blog listeleme
         }
 
         public Blog GetById(int id)
