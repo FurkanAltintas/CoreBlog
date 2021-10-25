@@ -1,0 +1,19 @@
+﻿@model EntityLayer.Concrete.Blog
+
+<div class="single-gd tech-btm">
+    <h4>Son Post</h4>
+    <div class="blog-grids">
+        <div class="blog-grid-left">
+            <a href="single.html">
+                <img src="@Model.Image" class="img-fluid" alt="">
+            </a>
+        </div>
+        <div class="blog-grid-right">
+
+            <h5>
+                <a href="@Url.Action("Detail","Blog",new { id = Model.BlogId })">@Model.Title</a>
+            </h5>
+        </div>
+        <div class="clearfix"> </div>
+    </div>
+</div>
