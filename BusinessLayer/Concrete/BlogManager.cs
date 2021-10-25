@@ -48,6 +48,11 @@ namespace BusinessLayer.Concrete
             return _blogDal.GetListAll();
         }
 
+        public Blog LastPost()
+        {
+            return _blogDal.GetListAll().TakeLast(1).FirstOrDefault();
+        }
+
         public void Update(Blog blog)
         {
             _blogDal.Update(blog);
