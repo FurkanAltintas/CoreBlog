@@ -280,3 +280,6 @@ C:\Users\furka\Documents\GitHub\CoreBlog\CoreBlog\bin\Debug\net5.0\FluentValidat
 C:\Users\furka\Documents\GitHub\CoreBlog\CoreBlog\bin\Debug\net5.0\FluentValidation.AspNetCore.dll
 C:\Users\furka\Documents\GitHub\CoreBlog\CoreBlog\bin\Debug\net5.0\FluentValidation.DependencyInjectionExtensions.dll
 C:\Users\furka\Documents\GitHub\CoreBlog\CoreBlog\obj\Debug\net5.0\CoreBlog.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\furka\Documents\GitHub\CoreBlog\CoreBlog\obj\Debug\net5.0\Razor\Views\Account\Login.cshtml.g.cs
+C:\Users\furka\Documents\GitHub\CoreBlog\CoreBlog\obj\Debug\net5.0\Razor\Views\Shared\Components\BlogListByWriter\Default.cshtml.g.cs
+C:\Users\furka\Documents\GitHub\CoreBlog\CoreBlog\obj\Debug\net5.0\Razor\Views\Newsletter\Index.cshtml.g.cs
