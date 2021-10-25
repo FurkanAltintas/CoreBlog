@@ -59,11 +59,11 @@ namespace DataAccessLayer.Migrations
                     b.Property<int>("CategoryId")
                         .HasColumnType("int");
 
-                    b.Property<string>("Content")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<DateTime>("CreateDate")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Image")
                         .HasColumnType("nvarchar(max)");
@@ -77,9 +77,14 @@ namespace DataAccessLayer.Migrations
                     b.Property<string>("Title")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("WriterId")
+                        .HasColumnType("int");
+
                     b.HasKey("BlogId");
 
                     b.HasIndex("CategoryId");
+
+                    b.HasIndex("WriterId");
 
                     b.ToTable("Blogs");
                 });
@@ -115,14 +120,14 @@ namespace DataAccessLayer.Migrations
                     b.Property<int>("BlogId")
                         .HasColumnType("int");
 
-                    b.Property<string>("Content")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<DateTime>("CreateDate")
                         .HasColumnType("datetime2");
 
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
+
+                    b.Property<string>("Message")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Title")
                         .HasColumnType("nvarchar(max)");
@@ -167,6 +172,24 @@ namespace DataAccessLayer.Migrations
                     b.ToTable("Contacts");
                 });
 
+            modelBuilder.Entity("EntityLayer.Concrete.Newsletter", b =>
+                {
+                    b.Property<int>("NewsletterId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Mail")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("NewsletterId");
+
+                    b.ToTable("Newsletters");
+                });
+
             modelBuilder.Entity("EntityLayer.Concrete.Writer", b =>
                 {
                     b.Property<int>("WriterId")
@@ -183,8 +206,8 @@ namespace DataAccessLayer.Migrations
                     b.Property<string>("Image")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("IsActive")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
 
                     b.Property<string>("Mail")
                         .HasColumnType("nvarchar(max)");
@@ -205,7 +228,13 @@ namespace DataAccessLayer.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("EntityLayer.Concrete.Writer", "Writer")
+                        .WithMany("Blog")
+                        .HasForeignKey("WriterId");
+
                     b.Navigation("Category");
+
+                    b.Navigation("Writer");
                 });
 
             modelBuilder.Entity("EntityLayer.Concrete.Comment", b =>
@@ -225,6 +254,11 @@ namespace DataAccessLayer.Migrations
                 });
 
             modelBuilder.Entity("EntityLayer.Concrete.Category", b =>
+                {
+                    b.Navigation("Blog");
+                });
+
+            modelBuilder.Entity("EntityLayer.Concrete.Writer", b =>
                 {
                     b.Navigation("Blog");
                 });
