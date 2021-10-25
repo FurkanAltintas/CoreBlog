@@ -12,7 +12,7 @@ namespace EntityLayer.Concrete
         [Key]
         public int BlogId { get; set; }
         public string Title { get; set; }
-        public string Content { get; set; }
+        public string Description { get; set; }
         public string Thumbnail { get; set; }
         public string Image { get; set; }
         public DateTime CreateDate { get; set; }
@@ -22,5 +22,8 @@ namespace EntityLayer.Concrete
         public Category Category { get; set; }
 
         public List<Comment> Comment { get; set; }
+
+        public int? WriterId { get; set; }
+        public Writer Writer { get; set; }
     }
 }
