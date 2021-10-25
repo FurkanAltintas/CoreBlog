@@ -15,7 +15,7 @@
                     <div class="b-grid-top">
                         <div class="blog_info_left_grid">
                             <a href="single.html">
-                                <img src="~/weblog/images/b1.jpg" class="img-fluid" alt="">
+                                <img src="@Model.Image" class="img-fluid" alt="">
                             </a>
                         </div>
                         <div class="blog-info-middle">
@@ -68,23 +68,7 @@
                })
                     @await Component.InvokeAsync("CategoryList")
                     @await Component.InvokeAsync("BlogListByWriter", new { id = Model.WriterId })
-                    <div class="single-gd tech-btm">
-                        <h4>Son Post</h4>
-                        <div class="blog-grids">
-                            <div class="blog-grid-left">
-                                <a href="single.html">
-                                    <img src="~/weblog/images/b1.jpg" class="img-fluid" alt="">
-                                </a>
-                            </div>
-                            <div class="blog-grid-right">
-
-                                <h5>
-                                    <a href="single.html">Pellentesque dui, non felis. Maecenas male</a>
-                                </h5>
-                            </div>
-                            <div class="clearfix"> </div>
-                        </div>
-                    </div>
+                    @await Component.InvokeAsync("BlogLastPost")
                 </div>
 
             </aside>
