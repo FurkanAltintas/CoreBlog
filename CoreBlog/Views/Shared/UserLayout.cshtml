@@ -17,11 +17,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             window.scrollTo(0, 1);
         }
     </script>
-    <link href="~/weblog/css/bootstrap.css" rel='stylesheet' type='text/css' />
-    <link rel="stylesheet" href="~/weblog/css/single.css">
-    <link href="~/weblog/css/style.css" rel='stylesheet' type='text/css' />
-    <link href="~/weblog/css/fontawesome-all.css" rel="stylesheet">
-    <link href="//fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800"
+    <link href="@Url.Content("~/weblog/css/bootstrap.css")" rel='stylesheet' type='text/css' />
+    <link rel="stylesheet" href="@Url.Content("~/weblog/css/single.css")">
+    <link href="@Url.Content("~/weblog/css/style.css")" rel='stylesheet' type='text/css' />
+    <link href="@Url.Content("~/weblog/css/fontawesome-all.css")" rel="stylesheet">
+    <link href="@Url.Content("//fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800")"
           rel="stylesheet">
 </head>
 
@@ -32,13 +32,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <div class="top-bar_sub_w3layouts container-fluid">
             <div class="row">
                 <div class="col-md-4 logo text-left">
-                    <a class="navbar-brand" href="index.html">
+                    <a class="navbar-brand" href="@Url.Action("")">
                         <i class="fab fa-linode"></i> Weblog
                     </a>
                 </div>
-                @await Html.PartialAsync("~/Views/Shared/Home/Account.cshtml") 
+                @await Html.PartialAsync("~/Views/Shared/Home/Account.cshtml")
                 <div class="col-md-4 log-icons text-right">
-
                     <ul class="social_list1 mt-3">
 
                         <li>
@@ -74,8 +73,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-
-
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
@@ -119,14 +116,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     @RenderBody()
     <!--//main-->
     <!--footer-->
-    @await Html.PartialAsync("~/Views/Shared/Home/Footer.cshtml") 
+    @await Html.PartialAsync("~/Views/Shared/Home/Footer.cshtml")
     <!---->
     <!-- js -->
-    <script src="~/weblog/js/jquery-2.2.3.min.js"></script>
+    <script src="@Url.Content("~/weblog/js/jquery-2.2.3.min.js")"></script>
     <!-- //js -->
     <!--/ start-smoth-scrolling -->
-    <script src="~/weblog/js/move-top.js"></script>
-    <script src="~/weblog/js/easing.js"></script>
+    <script src="@Url.Content("~/weblog/js/move-top.js")"></script>
+    <script src="@Url.Content("~/weblog/js/easing.js")"></script>
     <script>
         jQuery(document).ready(function ($) {
             $(".scroll").click(function (event) {
@@ -138,7 +135,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         });
     </script>
     <!--// end-smoth-scrolling -->
-
     <script>
         $(document).ready(function () {
             /*
@@ -159,11 +155,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <a href="#home" class="scroll" id="toTop" style="display: block;">
         <span id="toTopHover" style="opacity: 1;"> </span>
     </a>
-
     <!-- //Custom-JavaScript-File-Links -->
-    <script src="~/weblog/js/bootstrap.js"></script>
-
-
+    <script src="@Url.Content("~/weblog/js/bootstrap.js")"></script>
 </body>
-
 </html>
