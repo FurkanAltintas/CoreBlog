@@ -18,10 +18,17 @@ namespace DataAccessLayer.Repositories
             c.SaveChanges();
         }
 
-        public T GetById(int id)
+        public T GetById(int? id, Expression<Func<T, bool>> filter = null)
         {
             using var c = new Context();
-            return c.Set<T>().Find(id);
+            if (filter == null)
+            {
+                return c.Set<T>().Find(id);
+            }
+            else
+            {
+                return c.Set<T>().Where(filter).First();
+            }
         }
 
         public List<T> GetListAll(Expression<Func<T, bool>> filter = null)
