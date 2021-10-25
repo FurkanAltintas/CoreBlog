@@ -12,7 +12,16 @@ namespace DataAccessLayer.Abstract
         void Insert(T t);
         void Delete(T t);
         void Update(T t);
-        List<T> GetListAll(Expression<Func<T,bool>>filter=null);
-        T GetById(int id);
+        //List<T> GetListAll();
+
+        List<T> GetListAll(Expression<Func<T, bool>> filter = null);
+
+        //T GetById(int id);
+
+        T GetById(int? id, Expression<Func<T, bool>> filter = null);
+       
+        //Tek değer getirme ve listeleme filtrelenmiştir.
+        //Insert ve Update tek değer olarak yapılabilir
+        // id > 0 ise Update // id == 0 ise Insert
     }
 }
