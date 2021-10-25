@@ -40,7 +40,7 @@ namespace CoreBlog.Controllers
         [HttpGet]
         public IActionResult Register()
         {
-            ViewBag.City = GetCity();
+            GetCity();
             return View();
         }
 
@@ -60,25 +60,36 @@ namespace CoreBlog.Controllers
                 {
                     ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
                 }
+                GetCity();
             }
-            return View(p);
+            return View();
         }
 
-        public List<SelectListItem> GetCity()
+        public void GetCity()
         {
-            List<SelectListItem> city = (from x in Cities()
-                                         select new SelectListItem
-                                         {
-                                             Text = x,
-                                             Value = x
-                                         }).ToList();
-            return city;
+            //1. Yöntem
+            ViewBag.City = new SelectList(from x in Cities()
+                                          select new SelectListItem
+                                          {
+                                              Text = "x",
+                                              Value = "x"
+                                          }).ToList();
+            //2. Yöntem
+            //ViewBag.City = new SelectList(Cities().ToList(), "Id", "Name");
+
+            //3. Yöntem
+            //List<SelectListItem> city = (from x in Cities()
+            //                             select new SelectListItem
+            //                             {
+            //                                 Text = x,
+            //                                 Value = x
+            //                             }).ToList();
+            //ViewBag.City = city;
         }
 
         public List<string> Cities()
         {
             string[] cities = new string[] { "İstanbul", "İzmir", "Ankara", "Tokat", "Amasya", "Düzce", "Eskişehir" };
-
             return new List<string>(cities);
         }
     }
