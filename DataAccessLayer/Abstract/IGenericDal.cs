@@ -19,7 +19,8 @@ namespace DataAccessLayer.Abstract
 
         //T GetById(int id);
 
-        T GetById(int? id = null, Expression<Func<T, bool>> filter = null);
+        T GetByBind(Expression<Func<T, bool>> filter = null);
+        T GetById(int? id = null);
 
         //Tek değer getirme ve listeleme filtrelenmiştir.
         //Insert ve Update tek değer olarak yapılabilir
