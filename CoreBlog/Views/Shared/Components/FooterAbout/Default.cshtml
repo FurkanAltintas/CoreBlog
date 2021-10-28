@@ -1,0 +1,9 @@
+﻿@model EntityLayer.Concrete.About
+
+<div class="col-lg-4 footer-grid-agileits-w3ls text-left">
+    <h3>Hakkımızda</h3>
+    <p>@(Model.Details2.Length < 100 ? Model.Details2 : Model.Details2.Substring(0,Model.Details2.Substring(0,100).LastIndexOf(" ")))...</p>
+    <div class="read">
+        <a href="@Url.Action("Index","About")" class="btn btn-primary read-m">Devamını Oku</a>
+    </div>
+</div>
