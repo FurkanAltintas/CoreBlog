@@ -285,3 +285,8 @@ C:\Users\furka\Documents\GitHub\CoreBlog\CoreBlog\obj\Debug\net5.0\Razor\Views\S
 C:\Users\furka\Documents\GitHub\CoreBlog\CoreBlog\obj\Debug\net5.0\Razor\Views\Newsletter\Index.cshtml.g.cs
 C:\Users\furka\Documents\GitHub\CoreBlog\CoreBlog\obj\Debug\net5.0\Razor\Views\Shared\Components\BlogLastPost\Default.cshtml.g.cs
 C:\Users\furka\Documents\GitHub\CoreBlog\CoreBlog\obj\Debug\net5.0\Razor\Views\Error\Index.cshtml.g.cs
+C:\Users\furka\Documents\GitHub\CoreBlog\CoreBlog\obj\Debug\net5.0\Razor\Views\About\Index.cshtml.g.cs
+C:\Users\furka\Documents\GitHub\CoreBlog\CoreBlog\obj\Debug\net5.0\Razor\Views\Shared\Components\RecentPost\Default.cshtml.g.cs
+C:\Users\furka\Documents\GitHub\CoreBlog\CoreBlog\obj\Debug\net5.0\Razor\Views\Contact\Index.cshtml.g.cs
+C:\Users\furka\Documents\GitHub\CoreBlog\CoreBlog\obj\Debug\net5.0\Razor\Views\Shared\Components\FooterAbout\Default.cshtml.g.cs
+C:\Users\furka\Documents\GitHub\CoreBlog\CoreBlog\obj\Debug\net5.0\Razor\Views\Shared\Components\FooterRecentPost\Default.cshtml.g.cs
