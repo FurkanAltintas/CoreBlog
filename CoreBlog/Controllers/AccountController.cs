@@ -4,15 +4,20 @@ using CoreBlog.ViewModels;
 using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
 using FluentValidation.Results;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace CoreBlog.Controllers
 {
+    [AllowAnonymous]
     public class AccountController : Controller
     {
         WriterManager writerManager = new WriterManager(new EfWriterRepository());
@@ -24,10 +29,18 @@ namespace CoreBlog.Controllers
         }
 
         [HttpPost]
-        public IActionResult Login(Writer p)
+        public async Task<IActionResult> Login(Writer p)
         {
             if (writerManager.Login(p))
             {
+                var claims = new List<Claim>
+                {
+                    new Claim(ClaimTypes.Name,p.Mail)
+                };
+                var useridentity = new ClaimsIdentity(claims, "a");
+                ClaimsPrincipal principal = new ClaimsPrincipal(useridentity);
+                await HttpContext.SignInAsync(principal);
+                //HttpContext.Session.SetString("username", p.Mail);
                 return RedirectToAction("Index", "Blog");
             }
             else
@@ -63,6 +76,12 @@ namespace CoreBlog.Controllers
                 GetCity();
             }
             return View();
+        }
+
+        public IActionResult LogOut()
+        {
+            HttpContext.Session.Clear();
+            return RedirectToAction("Index", "Blog");
         }
 
         public void GetCity()
