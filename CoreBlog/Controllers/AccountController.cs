@@ -67,24 +67,13 @@ namespace CoreBlog.Controllers
 
         public void GetCity()
         {
-            //1. Yöntem
-            ViewBag.City = new SelectList(from x in Cities()
-                                          select new SelectListItem
-                                          {
-                                              Text = "x",
-                                              Value = "x"
-                                          }).ToList();
-            //2. Yöntem
-            //ViewBag.City = new SelectList(Cities().ToList(), "Id", "Name");
-
-            //3. Yöntem
-            //List<SelectListItem> city = (from x in Cities()
-            //                             select new SelectListItem
-            //                             {
-            //                                 Text = x,
-            //                                 Value = x
-            //                             }).ToList();
-            //ViewBag.City = city;
+            List<SelectListItem> city = (from x in Cities()
+                                         select new SelectListItem
+                                         {
+                                             Text = x,
+                                             Value = x
+                                         }).ToList();
+            ViewBag.City = city;
         }
 
         public List<string> Cities()
