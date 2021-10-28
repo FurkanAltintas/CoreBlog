@@ -16,7 +16,7 @@ namespace EntityLayer.Concrete
         public string Image { get; set; }
         public string Mail { get; set; }
         public string Password { get; set; }
-        public virtual string RPassword { get; set; }
+        public string RPassword { get; set; }
         public bool IsActive { get; set; }
         public List<Blog> Blog { get; set; }
     }
