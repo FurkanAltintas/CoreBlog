@@ -62,10 +62,14 @@
                     <div class="tech-btm">
                         <img src="~/weblog/images/banner1.jpg" class="img-fluid" alt="">
                     </div>
-                    @await Html.PartialAsync("~/Views/Newsletter/Index.cshtml", new NewsletterById()
-               {
-                   BlogId = Model.BlogId
-               })
+                    <div class="tech-btm">
+                        <h4>Haber bültenimize kaydolun</h4>
+                        @await Html.PartialAsync("~/Views/Newsletter/Index.cshtml", new NewsletterById()
+                       {
+                       BlogId = Model.BlogId
+                       })
+                    </div>
+
                     @await Component.InvokeAsync("CategoryList")
                     @await Component.InvokeAsync("BlogListByWriter", new { id = Model.WriterId })
                     @await Component.InvokeAsync("BlogLastPost")
