@@ -9,17 +9,18 @@ namespace DataAccessLayer.Abstract
 {
     public interface IGenericDal<T> where T : class
     {
-        void Insert(T t);
-        void Delete(T t);
-        void Update(T t);
+        void Insert(T t); //Ekleme
+        void Delete(T t); //Silme
+        void Update(T t); //Güncelleme
+
         //List<T> GetListAll();
 
         List<T> GetListAll(Expression<Func<T, bool>> filter = null);
 
         //T GetById(int id);
 
-        T GetById(int? id, Expression<Func<T, bool>> filter = null);
-       
+        T GetById(int? id = null, Expression<Func<T, bool>> filter = null);
+
         //Tek değer getirme ve listeleme filtrelenmiştir.
         //Insert ve Update tek değer olarak yapılabilir
         // id > 0 ise Update // id == 0 ise Insert
