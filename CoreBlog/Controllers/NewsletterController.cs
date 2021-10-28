@@ -23,7 +23,15 @@ namespace CoreBlog.Controllers
         public IActionResult Index(NewsletterById newsletterById, Newsletter p)
         {
             newsletterManager.Add(p);
-            return RedirectToAction("Detail", "Blog", new { id = newsletterById.BlogId });
+
+            if (newsletterById.BlogId > 0)
+            {
+                return RedirectToAction("Detail", "Blog", new { id = newsletterById.BlogId });
+            }
+            else
+            {
+                return RedirectToAction("Index", "About");
+            }
         }
     }
 }
