@@ -20,7 +20,7 @@ namespace BusinessLayer.Concrete
 
         public bool Login(Writer writer)
         {
-            var login = _writerDal.GetListAll(x => x.FullName == writer.FullName && x.Password == writer.Password);
+            var login = _writerDal.GetListAll(x => x.Mail == writer.Mail && x.Password == writer.Password).FirstOrDefault();
 
             if (login != null)
             {
