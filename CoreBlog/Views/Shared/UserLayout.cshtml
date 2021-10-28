@@ -32,8 +32,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <div class="top-bar_sub_w3layouts container-fluid">
             <div class="row">
                 <div class="col-md-4 logo text-left">
-                    <a class="navbar-brand" href="@Url.Action("")">
-                        <i class="fab fa-linode"></i> Weblog
+                    <a class="navbar-brand" href="@Url.Action("Index","Blog")">
+                        <i class="fab fa-linode"></i> FaBlog
                     </a>
                 </div>
                 @await Html.PartialAsync("~/Views/Shared/Home/Account.cshtml")
@@ -82,13 +82,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="about.html">Hakkımızda</a>
+                            <a class="nav-link" href="@Url.Action("Index","About")">Hakkımızda</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="contact.html">Bloglar</a>
+                            <a class="nav-link" href="@Url.Action("Index","Blog")">Bloglar</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="contact.html">İletişim</a>
+                            <a class="nav-link" href="@Url.Action("Index","Contact")">İletişim</a>
                         </li>
                     </ul>
                     <form action="#" method="post" class="form-inline my-2 my-lg-0 header-search">
