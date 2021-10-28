@@ -50,7 +50,12 @@ namespace BusinessLayer.Concrete
 
         public Blog LastPost()
         {
-            return _blogDal.GetListAll().TakeLast(1).FirstOrDefault();
+            return _blogDal.GetById();
+        }
+
+        public List<Blog> RecentPost(int number)
+        {
+            return _blogDal.GetListAll().TakeLast(number).ToList();
         }
 
         public void Update(Blog blog)
