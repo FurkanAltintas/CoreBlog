@@ -18,24 +18,29 @@ namespace BusinessLayer.Concrete
             _blogDal = blogDal;
         }
 
-        public void Add(Blog blog)
+        public void Add(Blog t)
         {
-            _blogDal.Insert(blog);
+            _blogDal.Insert(t);
         }
 
-        public void Delete(Blog blog)
+        public void Delete(Blog t)
         {
-            _blogDal.Delete(blog);
+            _blogDal.Delete(t);
         }
 
         public List<Blog> FetchCategory()
         {
-            return _blogDal.GetListWithCategory(); //Kategorileri getirme
+            return _blogDal.GetListWithCategory();
+        }
+
+        public List<Blog> FetchCategoryByWriter(int id)
+        {
+            return _blogDal.GetListWithCategoryByWriter(id);
         }
 
         public List<Blog> FetchWriter(int id)
         {
-            return _blogDal.GetListAll(x => x.WriterId == id).TakeLast(2).ToList(); // Son 2 blog listeleme
+            return _blogDal.GetListAll(x => x.WriterId == id).TakeLast(2).ToList();
         }
 
         public Blog GetById(int id)
@@ -43,14 +48,14 @@ namespace BusinessLayer.Concrete
             return _blogDal.GetById(id);
         }
 
-        public List<Blog> GetList()
-        {
-            return _blogDal.GetListAll();
-        }
-
         public Blog LastPost()
         {
             return _blogDal.GetById();
+        }
+
+        public List<Blog> List()
+        {
+            return _blogDal.GetListAll();
         }
 
         public List<Blog> RecentPost(int number)
@@ -58,9 +63,9 @@ namespace BusinessLayer.Concrete
             return _blogDal.GetListAll().TakeLast(number).ToList();
         }
 
-        public void Update(Blog blog)
+        public void Update(Blog t)
         {
-            _blogDal.Update(blog);
+            _blogDal.Update(t);
         }
     }
 }
