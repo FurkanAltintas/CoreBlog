@@ -1,0 +1,43 @@
+﻿@model EntityLayer.Concrete.Blog
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/WriterLayout.cshtml";
+}
+
+@using (Html.BeginForm("Edit", "Blog", FormMethod.Post))
+{
+    <div class="form-group">
+        @Html.TextBoxFor(x => x.Title, new { @class = "form-control", placeholder = "Başlık" })
+        @Html.ValidationMessageFor(x => x.Title, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.DropDownListFor(x => x.CategoryId, (List<SelectListItem>)ViewBag.Category, "Kategori Seçiniz", new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.CategoryId, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.TextAreaFor(x => x.Description, 15, 0, new { @class = "form-control", placeholder = "İçerik" })
+        @Html.ValidationMessageFor(x => x.Description, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.TextBoxFor(x => x.Thumbnail, new { @class = "form-control", placeholder = "Thumbnail" })
+    </div>
+
+    <div class="form-group">
+        @Html.TextBoxFor(x => x.Image, new { @class = "form-control", placeholder = "Görsel" })
+    </div>
+
+    <div class="form-check form-check-flat form-check-primary">
+        <label class="form-check-label">
+            @Html.CheckBoxFor(x => x.IsActive, new { @class = "form-check-input" })
+            Aktif Olsun Mu ?
+        </label>
+    </div>
+
+    <div class="form-group">
+        <button type="submit" class="btn btn-success">Blog Güncelle</button>
+    </div>
+}
