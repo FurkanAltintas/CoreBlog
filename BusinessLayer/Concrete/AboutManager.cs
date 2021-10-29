@@ -18,9 +18,9 @@ namespace BusinessLayer.Concrete
             _aboutDal = aboutDal;
         }
 
-        public void Add(About about)
+        public void Add(About t)
         {
-            _aboutDal.Insert(about);
+            _aboutDal.Insert(t);
         }
 
         public About Bring()
@@ -28,9 +28,24 @@ namespace BusinessLayer.Concrete
             return _aboutDal.GetById();
         }
 
-        public void Delete(About about)
+        public void Delete(About t)
         {
-            _aboutDal.Delete(about);
+            _aboutDal.Delete(t);
+        }
+
+        public About GetById(int id)
+        {
+            return _aboutDal.GetById(id);
+        }
+
+        public List<About> List()
+        {
+            return _aboutDal.GetListAll();
+        }
+
+        public void Update(About t)
+        {
+            _aboutDal.Update(t);
         }
     }
 }
