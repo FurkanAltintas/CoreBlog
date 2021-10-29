@@ -1,0 +1,82 @@
+﻿@model List<Blog>
+
+@{
+    ViewData["Title"] = "List";
+    Layout = "~/Views/Shared/WriterLayout.cshtml";
+
+    int i = 0;
+}
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="~/lib/jquery/dist/jquery.js"></script>
+
+<div class="row">
+    <div class="col-lg-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Başlık</th>
+                            <th>Tarihi</th>
+                            <th>Kategori</th>
+                            <th>Durum</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            i++;
+                            <tr>
+                                <td>@i</td>
+                                <td>@item.Title</td>
+                                <td>@item.CreateDate.ToLongDateString()</td>
+                                <td>@item.Category.Name</td>
+                                <td>@Html.Raw(item.IsActive ? "<label class='badge badge-success'>Aktif</label>" : "<label class='badge badge-danger'>Pasif</label>")</td>
+                                <td>
+                                    <a href="@Url.Action("Detail","Blog",new { id = item.BlogId })" class="btn btn-warning">
+                                        Detay
+                                    </a>
+
+                                    <a href="@Url.Action("Edit","Blog",new { id = item.BlogId })" class="btn btn-primary">
+                                        Güncelle
+                                    </a>
+
+                                    <a id="Sil_@item.BlogId" class="btn btn-danger">
+                                        Sil
+                                    </a>
+
+                                    <script>
+                                        $('#Sil_@item.BlogId').click(function () {
+                                            Swal.fire({
+                                                title: "Blog Silme?",
+                                                text: "Blogu silmek istediğinize emin misiniz!",
+                                                icon: "warning",
+                                                buttons: ["Hayır", true],
+                                                dangerMode: true,
+                                            })
+                                                .then((willDelete) => {
+                                                    if (willDelete) {
+                                                        Swal.fire("Blog başarıyla silinmiştir!", {
+                                                            icon: "success",
+                                                        });
+                                                    } else {
+                                                        swal("Blog silme işlemi iptal edilmiştir!");
+                                                    }
+                                                });
+                                        });
+                                    </script>
+
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<a href="@Url.Action("Add","Blog")" class="btn btn-behance">Yeni Blog Ekle</a>
