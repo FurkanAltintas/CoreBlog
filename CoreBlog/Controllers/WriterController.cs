@@ -14,15 +14,5 @@ namespace CoreBlog.Controllers
         {
             return View();
         }
-
-        public PartialViewResult Sidebar()
-        {
-            return PartialView();
-        }
-
-        public PartialViewResult Footer()
-        {
-            return PartialView();
-        }
     }
 }
