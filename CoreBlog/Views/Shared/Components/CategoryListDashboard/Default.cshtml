@@ -1,0 +1,40 @@
+﻿@model List<Category>
+
+@{
+    int i = 0;
+}
+<div class="row">
+    <div class="col-md-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Son Yorumlar</h4>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th> # </th>
+                                <th> Adı </th>
+                                <th> Açıklaması </th>
+                                <th> Durumu </th>
+                                <th> İçerikler </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                i++;
+                                <tr>
+                                    <td>@i</td>
+                                    <td>@item.Name</td>
+                                    <td>@item.Description</td>
+                                    <td>@Html.Raw(item.IsActive ? "<label class='badge badge-success'>Aktif</label>" : "<label class='badge badge-danger'>Pasif</label>")</td>
+                                    <td><a href="@Url.Action("","")" class="btn btn-success btn-sm">Detaylar</a></td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
