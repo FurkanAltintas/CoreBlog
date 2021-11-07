@@ -4,6 +4,7 @@ using EntityLayer.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -23,24 +24,28 @@ namespace BusinessLayer.Concrete
             _aboutDal.Insert(t);
         }
 
-        public About Bring()
-        {
-            return _aboutDal.GetById();
-        }
-
         public void Delete(About t)
         {
             _aboutDal.Delete(t);
         }
 
-        public About GetById(int id)
+        public About Get(int id)
         {
-            return _aboutDal.GetById(id);
+            return _aboutDal.Get();
         }
 
-        public List<About> List()
+        public About Get(Expression<Func<About, bool>> filter = null)
         {
-            return _aboutDal.GetListAll();
+            return filter == null ?
+                _aboutDal.Get() :
+                _aboutDal.Get(filter);
+        }
+
+        public List<About> List(Expression<Func<About, bool>> filter = null)
+        {
+            return filter == null ?
+                _aboutDal.GetListAll() :
+                _aboutDal.GetListAll(filter);
         }
 
         public void Update(About t)
