@@ -13,7 +13,7 @@ namespace CoreBlog.ViewComponents.Footer
         AboutManager aboutManager = new AboutManager(new EfAboutRepository());
         public IViewComponentResult Invoke()
         {
-            return View(aboutManager.Bring());
+            return View(aboutManager.Get());
         }
     }
 }
