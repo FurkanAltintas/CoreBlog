@@ -13,7 +13,7 @@ namespace CoreBlog.ViewComponents.Writer
         BlogManager blogManager = new BlogManager(new EfBlogRepository());
         public IViewComponentResult Invoke(int id)
         {
-            return View(blogManager.FetchWriter(id));
+            return View(blogManager.FetchWriter(id, 2));
         }
     }
 }
