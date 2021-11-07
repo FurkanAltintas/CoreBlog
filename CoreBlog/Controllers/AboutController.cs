@@ -13,7 +13,7 @@ namespace CoreBlog.Controllers
         AboutManager aboutManager = new AboutManager(new EfAboutRepository());
         public IActionResult Index()
         {
-            return View(aboutManager.Bring());
+            return View(aboutManager.Get());
         }
     }
 }
