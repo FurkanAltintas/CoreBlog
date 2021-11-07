@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EntityLayer.Concrete;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,7 +10,8 @@ namespace BusinessLayer.Abstract
     public interface IStatisticService
     {
         int BlogCount();
+        List<Blog> Blog();
         int BlogByWriterCount(int id);
-        int BlogWeekCount();
+        int Category();
     }
 }
