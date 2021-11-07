@@ -20,6 +20,7 @@ namespace EntityLayer.Concrete
         public string UserName { get; set; }
         public string Title { get; set; }
         public string Message { get; set; }
+        public int Score { get; set; }
         public DateTime CreateDate { get; set; }
         public bool IsActive { get; set; }
 
