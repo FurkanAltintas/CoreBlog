@@ -4,6 +4,7 @@ using EntityLayer.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -38,24 +39,33 @@ namespace BusinessLayer.Concrete
             return _blogDal.GetListWithCategoryByWriter(id);
         }
 
-        public List<Blog> FetchWriter(int id)
+        public List<Blog> FetchWriter(int id, int number)
         {
-            return _blogDal.GetListAll(x => x.WriterId == id).TakeLast(2).ToList();
+            return _blogDal.GetListAll(x => x.WriterId == id).TakeLast(number).ToList();
         }
 
-        public Blog GetById(int id)
+        public Blog Get(int id)
         {
-            return _blogDal.GetById(id);
+            return _blogDal.Get(id);
+        }
+
+        public Blog Get(Expression<Func<Blog, bool>> filter = null)
+        {
+            return filter == null ?
+                _blogDal.Get() :
+                _blogDal.Get(filter);
         }
 
         public Blog LastPost()
         {
-            return _blogDal.GetById();
+            return _blogDal.Get();
         }
 
-        public List<Blog> List()
+        public List<Blog> List(Expression<Func<Blog, bool>> filter = null)
         {
-            return _blogDal.GetListAll();
+            return filter == null ?
+                _blogDal.GetListAll() :
+                _blogDal.GetListAll(filter);
         }
 
         public List<Blog> RecentPost(int number)
