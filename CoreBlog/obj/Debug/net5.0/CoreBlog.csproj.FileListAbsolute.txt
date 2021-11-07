@@ -302,3 +302,5 @@ C:\Users\furka\Documents\GitHub\CoreBlog\CoreBlog\obj\Debug\net5.0\Razor\Views\D
 C:\Users\furka\Documents\GitHub\CoreBlog\CoreBlog\obj\Debug\net5.0\Razor\Views\Dashboard\Sidebar.cshtml.g.cs
 C:\Users\furka\Documents\GitHub\CoreBlog\CoreBlog\obj\Debug\net5.0\Razor\Views\Shared\Components\CategoryListDashboard\Default.cshtml.g.cs
 C:\Users\furka\Documents\GitHub\CoreBlog\CoreBlog\obj\Debug\net5.0\Razor\Views\Shared\Components\BlogByWriterDashboard\Default.cshtml.g.cs
+C:\Users\furka\Documents\GitHub\CoreBlog\CoreBlog\obj\Debug\net5.0\Razor\Views\Shared\Components\WriterAboutOnDashboard\Default.cshtml.g.cs
+C:\Users\furka\Documents\GitHub\CoreBlog\CoreBlog\obj\Debug\net5.0\Razor\Views\Writer\Profile.cshtml.g.cs
