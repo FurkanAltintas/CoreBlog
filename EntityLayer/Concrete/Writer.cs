@@ -17,6 +17,7 @@ namespace EntityLayer.Concrete
         public string Mail { get; set; }
         public string Password { get; set; }
         public string RPassword { get; set; }
+        public DateTime CreateDate { get; set; }
         public bool IsActive { get; set; }
         public List<Blog> Blog { get; set; }
     }
