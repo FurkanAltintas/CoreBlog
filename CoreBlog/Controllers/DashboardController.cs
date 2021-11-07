@@ -12,12 +12,25 @@ namespace CoreBlog.Controllers
     [AllowAnonymous]
     public class DashboardController : Controller
     {
-        StatisticManager statisticManager = new StatisticManager(new EfBlogRepository());
+        StatisticManager statisticManager = new StatisticManager
+            (
+            new EfBlogRepository(),
+            new EfCategoryRepository()
+            );
         public IActionResult Index()
         {
+            DateTime date = DateTime.Now;
             ViewBag.Blog = statisticManager.BlogCount();
+            ViewBag.BlogDay = statisticManager.Blog().Where(x=>x.CreateDate.Year == date.Year && x.CreateDate.Month == date.Month && x.CreateDate.Day == date.Day).Count();
+            ViewBag.BlogMonth = statisticManager.Blog().Where(x => x.CreateDate.Year == date.Year && x.CreateDate.Month == date.Month).Count();
+            ViewBag.BlogYear = statisticManager.Blog().Where(x => x.CreateDate.Year == date.Year).Count();
+            
             ViewBag.BlogByWriter = statisticManager.BlogByWriterCount(1);
-            ViewBag.BlogWeek = statisticManager.BlogWeekCount();
+            ViewBag.BlogWriterDay = statisticManager.Blog().Where(x => x.WriterId == 1 & x.CreateDate.Year == date.Year & x.CreateDate.Month == date.Month & x.CreateDate.Day == date.Day).Count();
+            ViewBag.BlogWriterMonth = statisticManager.Blog().Where(x => x.WriterId == 1 & x.CreateDate.Year == date.Year & x.CreateDate.Month == date.Month).Count();
+            ViewBag.BlogWriterYear = statisticManager.Blog().Where(x => x.WriterId == 1 & x.CreateDate.Year == date.Year).Count();
+
+            ViewBag.Category = statisticManager.Category();
             return View();
         }
 
