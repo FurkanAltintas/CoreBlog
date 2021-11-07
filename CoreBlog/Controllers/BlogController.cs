@@ -25,8 +25,8 @@ namespace CoreBlog.Controllers
         }
 
         public IActionResult Detail(int id)
-        {
-            return View(blogManager.GetById(id));
+        {   
+            return View(blogManager.Get(id));
         }
 
         public IActionResult List()
@@ -75,7 +75,7 @@ namespace CoreBlog.Controllers
         public IActionResult Edit(int id)
         {
             Category();
-            return View(blogManager.GetById(id));
+            return View(blogManager.Get(id));
         }
 
         [HttpPost]
@@ -102,7 +102,7 @@ namespace CoreBlog.Controllers
 
         public Blog Get(int id)
         {
-            return blogManager.GetById(id);
+            return blogManager.Get(id);
         }
 
         public void Category()
