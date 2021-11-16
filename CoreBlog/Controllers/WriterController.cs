@@ -1,9 +1,11 @@
 ﻿using BusinessLayer.Concrete;
 using BusinessLayer.ValidationRules;
+using CoreBlog.Models;
 using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
 using FluentValidation.Results;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -29,11 +31,13 @@ namespace CoreBlog.Controllers
         }
 
         [HttpPost]
-        public IActionResult Profile(Writer p)
+        public IActionResult Profile(IFormFile formFile, Writer p)
         {
+            ProfileImage profileImage = new ProfileImage();
             ValidationResult validationResult = writerValidator.Validate(p);
             if (validationResult.IsValid)
             {
+                profileImage.Profile(formFile, out string fileName);
                 var key = writerManager.Get(p.WriterId);
                 p.IsActive = key.IsActive;
                 p.CreateDate = key.CreateDate;
