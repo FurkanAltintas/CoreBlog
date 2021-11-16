@@ -8,7 +8,7 @@
 <div class="col-12 grid-margin stretch-card">
     <div class="card">
         <div class="card-body">
-            @using (Html.BeginForm("Profile", "Writer", FormMethod.Post, new { @class = "forms-sample", @enctype = "multipart/form-data" }))
+            @using (Html.BeginForm("Profile", "Writer", FormMethod.Post, new { @class = "forms-sample", enctype = "multipart/form-data" }))
             {
                 @Html.HiddenFor(x => x.WriterId)
 
