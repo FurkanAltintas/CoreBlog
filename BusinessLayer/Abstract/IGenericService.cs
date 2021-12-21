@@ -10,6 +10,7 @@ namespace BusinessLayer.Abstract
     public interface IGenericService<T>
     {
         List<T> List(Expression<Func<T, bool>> filter = null);
+        List<T> Ordered(Expression<Func<T, bool>> filter = null);
         void Add(T t);
         void Update(T t);
         void Delete(T t);
