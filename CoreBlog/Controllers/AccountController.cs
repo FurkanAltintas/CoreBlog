@@ -1,7 +1,5 @@
-﻿using BusinessLayer.Concrete;
+﻿using BusinessLayer.Abstract;
 using BusinessLayer.ValidationRules;
-using CoreBlog.ViewModels;
-using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
 using FluentValidation.Results;
 using Microsoft.AspNetCore.Authentication;
@@ -9,7 +7,6 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
@@ -20,8 +17,15 @@ namespace CoreBlog.Controllers
     [AllowAnonymous]
     public class AccountController : Controller
     {
-        WriterManager writerManager = new WriterManager(new EfWriterRepository());
+        IWriterService _writerService;
+
+        public AccountController(IWriterService writerService)
+        {
+            _writerService = writerService;
+        }
+
         WriterValidator writerValidator = new WriterValidator();
+
         [HttpGet]
         public IActionResult Login()
         {
@@ -31,17 +35,19 @@ namespace CoreBlog.Controllers
         [HttpPost]
         public async Task<IActionResult> Login(Writer p)
         {
-            if (writerManager.Login(p))
+            var writer = _writerService.Login(p);
+            if (writer != null)
             {
                 var claims = new List<Claim>
                 {
-                    new Claim(ClaimTypes.Name,p.Mail)
+                    new Claim(ClaimTypes.Name, writer.WriterId.ToString()),
+                    new Claim(ClaimTypes.Email, writer.Mail)
                 };
                 var useridentity = new ClaimsIdentity(claims, "a");
                 ClaimsPrincipal principal = new ClaimsPrincipal(useridentity);
                 await HttpContext.SignInAsync(principal);
                 //HttpContext.Session.SetString("username", p.Mail);
-                return RedirectToAction("Index", "Blog");
+                return RedirectToAction("Index", "Dashboard");
             }
             else
             {
@@ -64,7 +70,7 @@ namespace CoreBlog.Controllers
             if (validationResult.IsValid)
             {
                 p.IsActive = true;
-                writerManager.Add(p);
+                _writerService.Add(p);
                 return RedirectToAction("Login", "Account");
             }
             else
