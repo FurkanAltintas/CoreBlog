@@ -1,17 +1,19 @@
-﻿using BusinessLayer.Concrete;
-using DataAccessLayer.EntityFramework;
+﻿using BusinessLayer.Abstract;
 using EntityLayer.Concrete;
 using Microsoft.AspNetCore.Mvc;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace CoreBlog.Controllers
 {
     public class ContactController : Controller
     {
-        ContactManager contactManager = new ContactManager(new EfContactRepository());
+        IContactService _contactService;
+
+        public ContactController(IContactService contactService)
+        {
+            _contactService = contactService;
+        }
+
         [HttpGet]
         public IActionResult Index()
         {
@@ -23,7 +25,7 @@ namespace CoreBlog.Controllers
         {
             p.CreateDate = DateTime.Now;
             p.IsActive = true;
-            contactManager.Add(p);
+            _contactService.Add(p);
             return RedirectToAction("Index");
         }
     }
