@@ -1,5 +1,5 @@
 ﻿using BusinessLayer.Abstract;
-using DataAccessLayer.Abstract;
+using DataAccessLayer.Abstract.Repositories;
 using EntityLayer.Concrete;
 using System;
 using System.Collections.Generic;
@@ -66,6 +66,11 @@ namespace BusinessLayer.Concrete
             return filter == null ?
                 _blogDal.GetListAll() :
                 _blogDal.GetListAll(filter);
+        }
+
+        public List<Blog> Ordered(Expression<Func<Blog, bool>> filter = null)
+        {
+            throw new NotImplementedException();
         }
 
         public List<Blog> RecentPost(int number)
