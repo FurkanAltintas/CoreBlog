@@ -1,5 +1,5 @@
 ﻿using BusinessLayer.Abstract;
-using DataAccessLayer.Abstract;
+using DataAccessLayer.Abstract.Repositories;
 using EntityLayer.Concrete;
 using System;
 using System.Collections.Generic;
@@ -46,6 +46,11 @@ namespace BusinessLayer.Concrete
             return filter == null ?
                 _aboutDal.GetListAll() :
                 _aboutDal.GetListAll(filter);
+        }
+
+        public List<About> Ordered(Expression<Func<About, bool>> filter = null)
+        {
+            throw new NotImplementedException();
         }
 
         public void Update(About t)
