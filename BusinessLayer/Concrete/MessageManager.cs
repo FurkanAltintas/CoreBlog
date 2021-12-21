@@ -1,5 +1,5 @@
 ﻿using BusinessLayer.Abstract;
-using DataAccessLayer.Abstract;
+using DataAccessLayer.Abstract.Repositories;
 using EntityLayer.Concrete;
 using System;
 using System.Collections.Generic;
@@ -41,6 +41,11 @@ namespace BusinessLayer.Concrete
                 _messageDal.Get(filter);
         }
 
+        public List<Message> GetInboxListByWriter(int id)
+        {
+            return _messageDal.GetListWithMessageByWriter(id);
+        }
+
         public List<Message> List(Expression<Func<Message, bool>> filter = null)
         {
             return filter == null ?
@@ -48,10 +53,15 @@ namespace BusinessLayer.Concrete
                 _messageDal.GetListAll(filter);
         }
 
-        public List<Message> List(string mail, int number)
+        public List<Message> List(int mail, int number)
         {
-            var message = _messageDal.GetListAll(x => x.Receiver == mail).TakeLast(number).Reverse().ToList();
-            return message == null ? _messageDal.GetListAll(x => x.Receiver == mail).OrderByDescending(x => x.MessageId).ToList() : message;
+            var message = _messageDal.GetListAll(x => x.ReceiverId == mail).TakeLast(number).Reverse().ToList();
+            return message == null ? _messageDal.GetListAll(x => x.ReceiverId == mail).OrderByDescending(x => x.MessageId).ToList() : message;
+        }
+
+        public List<Message> Ordered(Expression<Func<Message, bool>> filter = null)
+        {
+            throw new NotImplementedException();
         }
 
         public void Update(Message t)
