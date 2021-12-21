@@ -1,19 +1,20 @@
-﻿using BusinessLayer.Concrete;
-using DataAccessLayer.EntityFramework;
+﻿using BusinessLayer.Abstract;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace CoreBlog.Controllers
 {
     public class AboutController : Controller
     {
-        AboutManager aboutManager = new AboutManager(new EfAboutRepository());
+        IAboutService _aboutService;
+
+        public AboutController(IAboutService aboutService)
+        {
+            _aboutService = aboutService;
+        }
+
         public IActionResult Index()
         {
-            return View(aboutManager.Get());
+            return View(_aboutService.Get());
         }
     }
 }
