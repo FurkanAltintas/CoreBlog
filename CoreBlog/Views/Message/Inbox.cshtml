@@ -1,0 +1,77 @@
+﻿@model List<Message>
+
+@{
+    ViewData["Title"] = "Inbox";
+    Layout = "~/Views/Shared/WriterLayout.cshtml";
+
+    int i = 0;
+}
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Konu</th>
+            <th>Gönderen</th>
+            <th>Tarih</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+
+            DateTime dateTime = DateTime.Now;
+            TimeSpan timeSpan = dateTime.Subtract(item.Date);
+            string date = "";
+
+            if (item.Date.Year == dateTime.Year)
+            {
+                if (item.Date.Month == dateTime.Month)
+                {
+                    if (timeSpan.Days == 0)
+                    {
+                        if (timeSpan.Hours == 0)
+                        {
+                            if (timeSpan.Minutes == 0)
+                            {
+                                date = "Şimdi";
+                            }
+                            else
+                            {
+                                date = new DateTime(timeSpan.Ticks).ToString("m 'dakika önce'");
+                            }
+                        }
+                        else
+                        {
+                            date = new DateTime(timeSpan.Ticks).ToString("H 'saat önce'");
+                        }
+                    }
+                    else
+                    {
+                        date = new DateTime(timeSpan.Ticks).ToString("d 'gün önce'");
+                    }
+                }
+                else
+                {
+                    date = new DateTime(timeSpan.Ticks).ToString("M 'ay önce'");
+                }
+            }
+            else
+            {
+                date = new DateTime(timeSpan.Ticks).ToString("y 'sene önce'");
+            }
+
+
+            i++;
+            <tr>
+                <td>@i</td>
+                <td>@item.Subject</td>
+                <td>@item.SenderUser.FullName</td>
+                <td>@date</td>
+                <td><a href="@Url.Action("Details","Message",new { id = item.MessageId })" class="btn btn-primary">Mesajı Aç</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a href="" class="btn btn-success">Yeni Mesaj Oluştur</a>
