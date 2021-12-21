@@ -453,10 +453,11 @@
     <!-- Sparkline demo data  -->
     <script src="~/admin/js/demo/sparkline-demo.js"></script>
 
-    <script>$(document).ready(function() {
+    <script>
+    $(document).ready(function () {
             $('.chart').easyPieChart({
                 barColor: '#f8ac59',
-//                scaleColor: false,
+                //                scaleColor: false,
                 scaleLength: 5,
                 lineWidth: 4,
                 size: 80
@@ -464,7 +465,7 @@
 
             $('.chart2').easyPieChart({
                 barColor: '#1c84c6',
-//                scaleColor: false,
+                //                scaleColor: false,
                 scaleLength: 5,
                 lineWidth: 4,
                 size: 80
@@ -502,7 +503,7 @@
                         show: true,
                         align: "center",
                         barWidth: 24 * 60 * 60 * 600,
-                        lineWidth:0
+                        lineWidth: 0
                     }
 
                 }, {
@@ -511,9 +512,9 @@
                     yaxis: 2,
                     color: "#1C84C6",
                     lines: {
-                        lineWidth:1,
-                            show: true,
-                            fill: true,
+                        lineWidth: 1,
+                        show: true,
+                        fill: true,
                         fillColor: {
                             colors: [{
                                 opacity: 0.2
