@@ -1,6 +1,6 @@
-﻿using BusinessLayer.Concrete;
+﻿using BusinessLayer.Abstract;
 using BusinessLayer.ValidationRules;
-using DataAccessLayer.EntityFramework;
+using CoreBlog.Base;
 using EntityLayer.Concrete;
 using FluentValidation.Results;
 using Microsoft.AspNetCore.Authorization;
@@ -9,35 +9,40 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace CoreBlog.Controllers
 {
     [AllowAnonymous]
-    public class BlogController : Controller
+    public class BlogController : BaseController
     {
-        BlogManager blogManager = new BlogManager(new EfBlogRepository());
-        CategoryManager categoryManager = new CategoryManager(new EfCategoryRepository());
+        IBlogService _blogService;
+        ICategoryService _categoryService;
         BlogValidator blogValidator = new BlogValidator();
+
+        public BlogController(IBlogService blogService, ICategoryService categoryService)
+        {
+            _blogService = blogService;
+            _categoryService = categoryService;
+        }
+
         public IActionResult Index()
         {
-            return View(blogManager.FetchCategory());
+            return View(_blogService.FetchCategory());
         }
 
         public IActionResult Detail(int id)
         {   
-            return View(blogManager.Get(id));
+            return View(_blogService.Get(id));
         }
 
         public IActionResult List()
         {
-            return View(blogManager.FetchCategoryByWriter(1));
+            return View(_blogService.FetchCategoryByWriter(1));
         }
 
         [HttpGet]
         public IActionResult Add()
         {
-            //ViewBag.Category = new SelectList(categoryManager.List(), "Id", "Name");
             Category();
             return View();
         }
@@ -50,8 +55,8 @@ namespace CoreBlog.Controllers
             {
                 p.IsActive = true;
                 p.CreateDate = DateTime.Now;
-                p.WriterId = 1;
-                blogManager.Add(p);
+                p.WriterId = Id;
+                _blogService.Add(p);
                 return RedirectToAction("List");
             }
             else
@@ -67,7 +72,7 @@ namespace CoreBlog.Controllers
 
         public IActionResult Delete(int id)
         {
-            blogManager.Delete(Get(id));
+            _blogService.Delete(Get(id));
             return RedirectToAction("List");
         }
 
@@ -75,7 +80,7 @@ namespace CoreBlog.Controllers
         public IActionResult Edit(int id)
         {
             Category();
-            return View(blogManager.Get(id));
+            return View(_blogService.Get(id));
         }
 
         [HttpPost]
@@ -87,7 +92,7 @@ namespace CoreBlog.Controllers
             {
                 p.WriterId = key.WriterId;
                 p.CreateDate = key.CreateDate;
-                blogManager.Update(p);
+                _blogService.Update(p);
                 return RedirectToAction("List");
             }
             else
@@ -102,12 +107,12 @@ namespace CoreBlog.Controllers
 
         public Blog Get(int id)
         {
-            return blogManager.Get(id);
+            return _blogService.Get(id);
         }
 
         public void Category()
         {
-            List<SelectListItem> category = (from x in categoryManager.List()
+            List<SelectListItem> category = (from x in _categoryService.List()
                                              select new SelectListItem
                                              {
 
