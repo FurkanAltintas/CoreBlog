@@ -1,18 +1,19 @@
-﻿using BusinessLayer.Concrete;
+﻿using BusinessLayer.Abstract;
 using CoreBlog.Models;
-using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace CoreBlog.Controllers
 {
     public class NewsletterController : Controller
     {
-        NewsletterManager newsletterManager = new NewsletterManager(new EfNewsletterRepository());
+        INewsletterService _newsletterService;
+
+        public NewsletterController(INewsletterService newsletterService)
+        {
+            _newsletterService = newsletterService;
+        }
+
         [HttpGet]
         public PartialViewResult Index()
         {
@@ -22,7 +23,7 @@ namespace CoreBlog.Controllers
         [HttpPost]
         public IActionResult Index(NewsletterById newsletterById, Newsletter p)
         {
-            newsletterManager.Add(p);
+            _newsletterService.Add(p);
 
             if (newsletterById.BlogId > 0)
             {
