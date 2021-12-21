@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace CoreBlog.Areas.Admin.Controllers
 {
+    [Area("Dashboard")]
     public class DashboardController : Controller
     {
         public IActionResult Index()
