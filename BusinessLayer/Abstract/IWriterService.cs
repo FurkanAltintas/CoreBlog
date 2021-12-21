@@ -9,6 +9,6 @@ namespace BusinessLayer.Abstract
 {
     public interface IWriterService : IGenericService<Writer>
     {
-        bool Login(Writer writer);
+        Writer Login(Writer writer);
     }
 }
