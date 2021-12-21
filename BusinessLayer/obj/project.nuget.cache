@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "oomayqJSdgkQ6H3NN909HIb/4imi0xhtKDhzjQUBJjyu7aHI4s57UAwQ/FZB08qleBuAmZIQHzwJoZNeY02Hgw==",
+  "dgSpecHash": "ww+7kq+0R+BWtVx9pr0ZXlMX3iaE/epA2RrYGaJBcHynhJTdRPE6AedEEKgfU//gDXBt/dHlegPsRzuQsWcDqQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\furka\\Documents\\GitHub\\CoreBlog\\BusinessLayer\\BusinessLayer.csproj",
   "expectedPackageFiles": [
@@ -35,6 +35,7 @@
     "C:\\Users\\furka\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",
     "C:\\Users\\furka\\.nuget\\packages\\microsoft.win32.systemevents\\4.7.0\\microsoft.win32.systemevents.4.7.0.nupkg.sha512",
     "C:\\Users\\furka\\.nuget\\packages\\newtonsoft.json\\10.0.1\\newtonsoft.json.10.0.1.nupkg.sha512",
+    "C:\\Users\\furka\\.nuget\\packages\\ninject\\3.3.4\\ninject.3.3.4.nupkg.sha512",
     "C:\\Users\\furka\\.nuget\\packages\\runtime.native.system\\4.3.0\\runtime.native.system.4.3.0.nupkg.sha512",
     "C:\\Users\\furka\\.nuget\\packages\\system.collections\\4.3.0\\system.collections.4.3.0.nupkg.sha512",
     "C:\\Users\\furka\\.nuget\\packages\\system.collections.concurrent\\4.3.0\\system.collections.concurrent.4.3.0.nupkg.sha512",
