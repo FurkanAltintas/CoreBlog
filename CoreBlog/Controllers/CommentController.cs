@@ -1,22 +1,21 @@
-﻿using BusinessLayer.Concrete;
-using CoreBlog.ViewModels;
-using DataAccessLayer.EntityFramework;
+﻿using BusinessLayer.Abstract;
 using EntityLayer.Concrete;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace CoreBlog.Controllers
 {
     public class CommentController : Controller
     {
-        CommentManager commentManager = new CommentManager(new EfCommentRepository());
-        CommentKey commentKey = new CommentKey();
+        ICommentService _commentService;
+
+        public CommentController(ICommentService commentService)
+        {
+            _commentService = commentService;
+        }
+
         public PartialViewResult List(int id)
         {
-            return PartialView(commentManager.List(id));
+            return PartialView(_commentService.List(id));
         }
 
         [HttpGet]
@@ -28,7 +27,7 @@ namespace CoreBlog.Controllers
         [HttpPost]
         public IActionResult Add(Comment p)
         {
-            commentManager.Add(p);
+            _commentService.Add(p);
             return RedirectToAction("Detail", "Blog", new { id = p.BlogId });
         }
     }
