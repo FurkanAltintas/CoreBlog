@@ -304,3 +304,13 @@ C:\Users\furka\Documents\GitHub\CoreBlog\CoreBlog\obj\Debug\net5.0\Razor\Views\S
 C:\Users\furka\Documents\GitHub\CoreBlog\CoreBlog\obj\Debug\net5.0\Razor\Views\Shared\Components\WriterAboutOnDashboard\Default.cshtml.g.cs
 C:\Users\furka\Documents\GitHub\CoreBlog\CoreBlog\obj\Debug\net5.0\Razor\Views\Writer\Profile.cshtml.g.cs
 C:\Users\furka\Documents\GitHub\CoreBlog\CoreBlog\obj\Debug\net5.0\Razor\Views\Shared\Components\Notification\Default.cshtml.g.cs
+C:\Users\furka\Documents\GitHub\CoreBlog\CoreBlog\obj\Debug\net5.0\Razor\Views\Notification\List.cshtml.g.cs
+C:\Users\furka\Documents\GitHub\CoreBlog\CoreBlog\bin\Debug\net5.0\Microsoft.DotNet.PlatformAbstractions.dll
+C:\Users\furka\Documents\GitHub\CoreBlog\CoreBlog\bin\Debug\net5.0\Microsoft.Extensions.DependencyModel.dll
+C:\Users\furka\Documents\GitHub\CoreBlog\CoreBlog\bin\Debug\net5.0\Ninject.dll
+C:\Users\furka\Documents\GitHub\CoreBlog\CoreBlog\obj\Debug\net5.0\Razor\Views\Message\Inbox.cshtml.g.cs
+C:\Users\furka\Documents\GitHub\CoreBlog\CoreBlog\obj\Debug\net5.0\Razor\Views\Message\Details.cshtml.g.cs
+C:\Users\furka\Documents\GitHub\CoreBlog\CoreBlog\obj\Debug\net5.0\Razor\Areas\Admin\Views\Shared\_Layout.cshtml.g.cs
+C:\Users\furka\Documents\GitHub\CoreBlog\CoreBlog\obj\Debug\net5.0\Razor\Areas\Admin\Views\Shared\_PartialNavbar.cshtml.g.cs
+C:\Users\furka\Documents\GitHub\CoreBlog\CoreBlog\obj\Debug\net5.0\Razor\Areas\Admin\Views\Dashboard\Index.cshtml.g.cs
+C:\Users\furka\Documents\GitHub\CoreBlog\CoreBlog\obj\Debug\net5.0\Razor\Areas\Admin\Views\Shared\_PartialTopbar.cshtml.g.cs
