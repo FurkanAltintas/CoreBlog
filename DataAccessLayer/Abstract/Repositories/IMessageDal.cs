@@ -5,9 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataAccessLayer.Abstract
+namespace DataAccessLayer.Abstract.Repositories
 {
-    public interface INewsletterDal : IGenericDal<Newsletter>
+    public interface IMessageDal : IGenericDal<Message>
     {
+        List<Message> GetListWithMessageByWriter(int id);
     }
 }

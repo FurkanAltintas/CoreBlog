@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataAccessLayer.Abstract
+namespace DataAccessLayer.Abstract.Repositories
 {
-    public interface INotificationDal : IGenericDal<Notification>
+    public interface ICommentDal : IGenericDal<Comment>
     {
     }
 }
