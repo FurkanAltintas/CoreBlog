@@ -1,7 +1,9 @@
-﻿using BusinessLayer.Concrete;
+﻿using BusinessLayer.Abstract;
+using BusinessLayer.Concrete;
 using BusinessLayer.ValidationRules;
+using CoreBlog.Base;
 using CoreBlog.Models;
-using DataAccessLayer.EntityFramework;
+using DataAccessLayer.Concrete.EntityFramework.Repositories;
 using EntityLayer.Concrete;
 using FluentValidation.Results;
 using Microsoft.AspNetCore.Authorization;
@@ -10,15 +12,22 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace CoreBlog.Controllers
 {
     [AllowAnonymous]
-    public class WriterController : Controller
+    public class WriterController : BaseController
     {
-        WriterManager writerManager = new WriterManager(new EfWriterRepository());
+        IWriterService _writerService;
         WriterValidator writerValidator = new WriterValidator();
+
+        public WriterController(IWriterService writerService)
+        {
+            _writerService = writerService;
+        }
+
         public IActionResult Index()
         {
             return View();
@@ -27,7 +36,7 @@ namespace CoreBlog.Controllers
         [HttpGet]
         public IActionResult Profile()
         {
-            return View(writerManager.Get(1));
+            return View(_writerService.Get(x => x.Mail == Mail));
         }
 
         [HttpPost]
@@ -38,10 +47,10 @@ namespace CoreBlog.Controllers
             if (validationResult.IsValid)
             {
                 profileImage.Profile(formFile, out string fileName);
-                var key = writerManager.Get(p.WriterId);
+                var key = _writerService.Get(p.WriterId);
                 p.IsActive = key.IsActive;
                 p.CreateDate = key.CreateDate;
-                writerManager.Update(p);
+                _writerService.Update(p);
                 return RedirectToAction("Profile");
             }
             else
