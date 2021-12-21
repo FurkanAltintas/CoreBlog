@@ -2,18 +2,19 @@
 @{
     DateTime dateTime = DateTime.Now;
     string date = "";
+    int count = Model.Count();
 }
 <li class="nav-item dropdown">
     <a class="nav-link count-indicator dropdown-toggle" id="messageDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
         <i class="mdi mdi-email-outline"></i>
-        @if (Model.Count() != 0)
+        @if (count != 0)
         {
             <span class="count-symbol bg-warning"></span>
         }
     </a>
     <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="messageDropdown">
         <h6 class="p-3 mb-0">Mesajlar</h6>
-        @if (Model.Count() != 0)
+        @if (count != 0)
         {
             foreach (var item in Model)
             {
@@ -48,7 +49,7 @@
                         <img src="~/dashboard/assets/images/faces/face4.jpg" alt="image" class="profile-pic">
                     </div>
                     <div class="preview-item-content d-flex align-items-start flex-column justify-content-center">
-                        <h6 class="preview-subject ellipsis mb-1 font-weight-normal">@item.Sender</h6>
+                        <h6 class="preview-subject ellipsis mb-1 font-weight-normal">@item.SenderUser.FullName</h6>
                         <p class="text-gray mb-0"> @date </p>
                     </div>
                 </a>
@@ -58,7 +59,15 @@
         {
             <p>Mesaj bulunmamaktadır</p>
         }
+
         <div class="dropdown-divider"></div>
-        <h6 class="p-3 mb-0 text-center">@Model.Count() yeni mesaj</h6>
+        @if (count != 0)
+        {
+            <h6 class="p-3 mb-0 text-center">@Model.Count() yeni mesaj</h6>
+        }
+        else
+        {
+            <h6 class="p-3 mb-0 text-center">Mesajınız bulunmamaktadır</h6>
+        }
     </div>
 </li>
