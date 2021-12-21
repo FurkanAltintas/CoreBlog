@@ -1,5 +1,5 @@
 ﻿using BusinessLayer.Abstract;
-using DataAccessLayer.Abstract;
+using DataAccessLayer.Abstract.Repositories;
 using EntityLayer.Concrete;
 using System;
 using System.Collections.Generic;
@@ -51,6 +51,13 @@ namespace BusinessLayer.Concrete
         public List<Notification> List(bool passive, int number)
         {
             return _notificationDal.GetListAll(x => x.IsActive == passive).TakeLast(number).Reverse().ToList();
+        }
+
+        public List<Notification> Ordered(Expression<Func<Notification, bool>> filter = null)
+        {
+            return filter == null ?
+                _notificationDal.GetListAll().OrderByDescending(x => x.NotificationId).ToList() :
+                _notificationDal.GetListAll(filter).OrderByDescending(x => x.NotificationId).ToList();
         }
 
         public void Update(Notification t)
