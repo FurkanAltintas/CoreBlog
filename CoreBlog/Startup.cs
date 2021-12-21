@@ -1,3 +1,6 @@
+using BusinessLayer.Abstract;
+using BusinessLayer.Concrete;
+using DataAccessLayer.Concrete.EntityFramework.Repositories;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
@@ -43,6 +46,17 @@ namespace CoreBlog
                     x.LoginPath = "/Account/Login";
                 }
             );
+
+            services.AddSingleton<IAboutService>(new AboutManager(new EfAboutRepository()));
+            services.AddSingleton<IBlogService>(new BlogManager(new EfBlogRepository()));
+            services.AddSingleton<ICategoryService>(new CategoryManager(new EfCategoryRepository()));
+            services.AddSingleton<ICommentService>(new CommentManager(new EfCommentRepository()));
+            services.AddSingleton<IContactService>(new ContactManager(new EfContactRepository()));
+            services.AddSingleton<IMessageService>(new MessageManager(new EfMessageRepository()));
+            services.AddSingleton<INewsletterService>(new NewsletterManager(new EfNewsletterRepository()));
+            services.AddSingleton<INotificationService>(new NotificationManager(new EfNotificationRepository()));
+            services.AddSingleton<IWriterService>(new WriterManager(new EfWriterRepository()));
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -69,6 +83,15 @@ namespace CoreBlog
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapAreaControllerRoute(
+                  name: "admin",
+                  areaName: "Admin",
+                  pattern: "{area:exists}/{controller=Dashboard}/{action=Index}/{id?}"
+                );
+            });
 
             app.UseEndpoints(endpoints =>
             {
