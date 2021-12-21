@@ -1,5 +1,5 @@
 ﻿using BusinessLayer.Abstract;
-using DataAccessLayer.Abstract;
+using DataAccessLayer.Abstract.Repositories;
 using EntityLayer.Concrete;
 using System;
 using System.Collections.Generic;
@@ -48,14 +48,14 @@ namespace BusinessLayer.Concrete
                 _writerDal.GetListAll(filter);
         }
 
-        public bool Login(Writer writer)
+        public Writer Login(Writer writer)
         {
-            var login = _writerDal.Get(x => x.Mail == writer.Mail && x.Password == writer.Password);
+            return _writerDal.Get(x => x.Mail == writer.Mail && x.Password == writer.Password);
+        }
 
-            if (login != null)
-                return true;
-            else
-                return false;
+        public List<Writer> Ordered(Expression<Func<Writer, bool>> filter = null)
+        {
+            throw new NotImplementedException();
         }
 
         public void Update(Writer t)
