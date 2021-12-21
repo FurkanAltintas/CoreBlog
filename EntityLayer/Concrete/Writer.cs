@@ -20,5 +20,8 @@ namespace EntityLayer.Concrete
         public DateTime CreateDate { get; set; }
         public bool IsActive { get; set; }
         public List<Blog> Blog { get; set; }
+
+        public virtual ICollection<Message> SenderMessage { get; set; }
+        public virtual ICollection<Message> ReceiverMessage { get; set; }
     }
 }
